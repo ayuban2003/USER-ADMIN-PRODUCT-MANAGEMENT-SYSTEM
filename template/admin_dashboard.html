@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        .menu {
+            margin-bottom: 20px;
+        }
+        .menu a {
+            text-decoration: none;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: #fff;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .menu a:hover {
+            background-color: #0056b3;
+        }
+        .logout {
+            background-color: #dc3545;
+        }
+        .logout:hover {
+            background-color: #b02a37;
+        }
+        .section {
+            margin-top: 30px;
+        }
+        .section h2 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .table th, .table td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        .table th {
+            background-color: #007BFF;
+            color: #fff;
+        }
+        .table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .button {
+            padding: 8px 12px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, {{ user['first_name'] }} (Admin)</h1>
+        <div class="menu">
+            <a href="#manage-users">Manage Users</a>
+            <a href="#manage-products">Manage Products</a>
+            <a href="#view-reports">View Reports</a>
+            <a href="/login.html" class="logout">Logout</a>
+        </div>
+
+        <!-- Manage Users Section -->
+        <div id="manage-users" class="section">
+            <h2>Manage Users</h2>
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>John Doe</td>
+                    <td>john.doe@example.com</td>
+                    <td>Regular User</td>
+                    <td>
+                        <a href="/edit_user/1" class="button">Edit</a>
+                        <a href="/delete_user/1" class="button" style="background-color: #dc3545;">Delete</a>
+                    </td>
+                </tr>
+                <!-- More rows as needed -->
+            </table>
+        </div>
+
+        <!-- Manage Products Section -->
+        <div id="manage-products" class="section">
+            <h2>Manage Products</h2>
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <td>101</td>
+                    <td>Product A</td>
+                    <td>Category 1</td>
+                    <td>$10</td>
+                    <td>
+                        <a href="/edit_product/101" class="button">Edit</a>
+                        <a href="/delete_product/101" class="button" style="background-color: #dc3545;">Delete</a>
+                    </td>
+                </tr>
+                <!-- More rows as needed -->
+            </table>
+            <a href="/add_product" class="button" style="margin-top: 10px; display: inline-block;">Add New Product</a>
+        </div>
+
+        <!-- View Reports Section -->
+        <div id="view-reports" class="section">
+            <h2>View Reports</h2>
+            <ul>
+                <li><a href="/reports/user_activity" class="button">User Activity</a></li>
+                <li><a href="/reports/sales" class="button">Sales Reports</a></li>
+                <li><a href="/reports/system_logs" class="button">System Logs</a></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

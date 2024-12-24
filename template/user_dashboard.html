@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f9f9f9;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 900px; /* Increase max width for better view on large screens */
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .product-message h2 {
+            font-size: 2rem;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        .product-message p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Ensure better responsiveness */
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #4CAF50;
+            padding: 12px 18px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            font-size: 1.1rem;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        a:hover {
+            background-color: #45a049;
+            transform: translateY(-3px);
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: #333;
+            margin-top: 30px;
+        }
+
+        /* Ensure all links within actions have a similar hover effect */
+        .actions a {
+            transition: transform 0.3s ease;
+        }
+
+        .actions a:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Additional styling for smaller devices */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 20px;
+                max-width: 100%;
+            }
+
+            .actions {
+                grid-template-columns: 1fr; /* Stack actions on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, User!</h1>
+
+        <!-- Product Message Section -->
+        <div class="product-message">
+            <h2>Explore Our Latest Products</h2>
+            <p>Browse through our wide selection of products. We have something for everyone, from everyday essentials to premium items. Feel free to explore, buy, and enjoy the best deals!</p>
+        </div>
+
+        <!-- Actions Section for User -->
+        <div class="actions">
+            <!-- View Products Button -->
+            <a href="{{ url_for('view_products') }}">View Products</a>
+
+            <!-- Buy Products Button -->
+            <a href="{{ url_for('buy_products') }}">Buy Products</a>
+
+            <!-- Receipt Button -->
+            <a href="/receipt">Receipt</a>
+
+            <!-- Change User Information -->
+            <a href="/change_user_info">Change User Information</a>
+
+            <!-- Change Password -->
+            <a href="{{ url_for('change_password') }}">Change Password</a>
+
+            <!-- Logout Button -->
+            <a href="/home">Logout</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+{% extends "user_dashboard.html" %}
+
+{% block content %}
+    <h2>Available Products</h2>
+
+    <!-- Button to toggle product list visibility -->
+    <button id="view-products-btn">View Products</button>
+
+    <!-- Product List -->
+    <div id="product-list" class="product-list hidden">
+        {% if products %}
+            {% for product in products %}
+                <div class="product-item">
+                    <h3>{{ product[1] }}</h3> <!-- Product Name -->
+                    <p>{{ product[2] }}</p> <!-- Description -->
+                    <p>Price: ${{ product[3] }}</p> <!-- Price -->
+                    <p>Available: {{ product[4] }} in stock</p> <!-- Quantity Available -->
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No products available.</p>
+        {% endif %}
+    </div>
+
+    <script>
+        document.getElementById('view-products-btn').addEventListener('click', function() {
+            var productList = document.getElementById('product-list');
+            // Toggle the 'hidden' class to show or hide the product list
+            productList.classList.toggle('hidden');
+        });
+    </script>
+
+    <style>
+        .hidden {
+            display: none;
+        }
+
+        .product-list {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .product-item {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .product-item h3 {
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .product-item p {
+            color: #666;
+            font-size: 1rem;
+        }
+    </style>
+{% endblock %}

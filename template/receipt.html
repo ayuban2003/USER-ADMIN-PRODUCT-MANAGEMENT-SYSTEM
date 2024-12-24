@@ -1,0 +1,16 @@
+{% extends "user_dashboard.html" %}
+
+{% block content %}
+    <h2>Your Purchase Receipt</h2>
+    <div class="receipt-list">
+        {% for order in orders %}
+            <div class="receipt-item">
+                <h3>Product Name: {{ order[1] }}</h3>
+                <p>Price: ${{ order[2] }}</p>
+                <p>Status: {{ order[3] }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <br>
+    <a href="{{ url_for('user_dashboard') }}">Back to Dashboard</a>
+{% endblock %}

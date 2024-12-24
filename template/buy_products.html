@@ -1,0 +1,27 @@
+{% extends "user_dashboard.html" %}
+
+{% block content %}
+    <h2>Available Products for Purchase</h2>
+    
+    <!-- Container for products -->
+    <div class="product-list">
+        {% if products %}
+            {% for product in products %}
+                <div class="product-item">
+                    <h3>{{ product[1] }}</h3>  <!-- Product name -->
+                    <p>{{ product[2] }}</p>  <!-- Product description -->
+                    <p><strong>Price:</strong> ${{ product[3] }}</p>  <!-- Product price -->
+                    <p><strong>Available:</strong> {{ product[4] }} in stock</p>  <!-- Product quantity -->
+                    
+                    <!-- Buy Now Button -->
+                    <form action="{{ url_for('purchase_product', product_id=product[0]) }}" method="post">
+                        <button type="submit">Buy Now</button>
+                    </form>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No products available for purchase at the moment.</p>
+        {% endif %}
+    </div>
+
+{% endblock %}
